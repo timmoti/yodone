@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Yodone",
+  "name": "Yodone",
+  "description": "Do or do not, there is no try.",
   "icons": [
     {
       "src": "favicon.ico",
