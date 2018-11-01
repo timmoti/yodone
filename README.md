@@ -1,6 +1,6 @@
 # Yodone
 
-24 hour disappear tasks this to do app has.
+24 hour disappearing tasks this to do app has.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See Deployment for notes on how to deploy the project on a live system.
