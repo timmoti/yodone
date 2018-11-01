@@ -15,7 +15,7 @@ Here are the steps to download a local copy of the app
 ```
 
 ## Deployment
-Use either [Heroku](https://www.heroku.com), [Now](https://zeit.co/now), or [Netlify](https://www.netlify.com) to deploy the app after pushing the code to your Github
+to do
 
 ## Built With
 - [create-react-app](https://www.npmjs.com/package/create-react-app)
