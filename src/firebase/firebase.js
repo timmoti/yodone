@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import 'firebase/database';
+import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
@@ -15,7 +15,10 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-const db = firebase.database();
+const db = firebase.firestore();
+db.settings({
+  timestampsInSnapshots: true
+});
 const auth = firebase.auth();
 
 export { auth, db };

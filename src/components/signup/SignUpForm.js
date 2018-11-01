@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase/firebase';
+import { db } from '../../firebase/index';
 import * as routes from '../../routes/routes';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
@@ -24,12 +25,12 @@ class SignUpForm extends Component {
         email,
         password
       );
-      // await db.doCreateUser(authUser.user.uid, email);
-      await this.setState({
+      await db.createUserInDb(authUser.user.uid, email);
+      this.setState({
         email: '',
         password: ''
       });
-      await history.push(routes.TODAY);
+      history.push(routes.TODAY);
     } catch (error) {
       const errorCode = error.code;
       if (errorCode === 'auth/email-already-in-use') {
