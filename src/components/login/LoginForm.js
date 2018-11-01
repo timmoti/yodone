@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { auth } from '../../firebase/firebase';
 import * as routes from '../../routes/routes';
 import swal from 'sweetalert';
-import { Link } from 'react-router-dom';
 
-class SignUpForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,33 +12,27 @@ class SignUpForm extends Component {
     };
   }
 
-  handleSubmit = async event => {
+  onSubmit = async event => {
     try {
       event.preventDefault();
       const { email, password } = this.state;
-
       const { history } = this.props;
-
-      const authUser = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      // await db.doCreateUser(authUser.user.uid, email);
-      await this.setState({
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({
         email: '',
         password: ''
       });
-      await history.push(routes.TODAY);
+      history.push(routes.TODAY);
     } catch (error) {
       const errorCode = error.code;
-      if (errorCode === 'auth/email-already-in-use') {
-        swal('Email found', 'Login, you should', 'error');
+      if (errorCode === 'auth/wrong-password') {
+        swal('Wrong password', 'Check your password, please', 'error');
       }
       if (errorCode === 'auth/invalid-email') {
         swal('Invalid email', 'Check your email, please', 'error');
       }
-      if (errorCode === 'auth/weak-password') {
-        swal('Weak password', 'Enter a stronger password, you should', 'error');
+      if (errorCode === 'auth/user-not-found') {
+        swal('User not found', 'Sign up for an account, you should', 'error');
       }
       console.error(error);
     }
@@ -49,7 +42,7 @@ class SignUpForm extends Component {
     const { email, password } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.onSubmit}>
         <input
           type="email"
           value={email}
@@ -63,16 +56,11 @@ class SignUpForm extends Component {
           onChange={event => this.setState({ password: event.target.value })}
           placeholder="Password"
           required
-          minLength="6"
         />
-        <button type="submit">Sign Up</button>
-
-        <p>
-          <Link to={routes.LOGIN}>Login</Link>
-        </p>
+        <button type="submit">Sign In</button>
       </form>
     );
   }
 }
 
-export default SignUpForm;
+export default LoginForm;
