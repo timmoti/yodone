@@ -16,8 +16,6 @@ class List extends Component {
   componentDidMount = async () => {
     try {
       const loadedArray = await db.getValidTasks(this.props.authUser.uid);
-
-      console.log(loadedArray);
       this.setState({
         taskArray: loadedArray
       });
