@@ -6,7 +6,7 @@ class Task extends Component {
     super(props);
 
     this.state = {
-      timeRemaining: 120
+      timeRemaining: 3600
     };
   }
 
@@ -15,7 +15,8 @@ class Task extends Component {
   };
 
   tick = () => {
-    const setTimeRemaining = (this.props.timeExpired - new Date()) / 1000;
+    const setTimeRemaining =
+      (this.props.timeExpired - new Date().getTime()) / 1000;
     this.setState({
       timeRemaining: setTimeRemaining
     });
@@ -23,7 +24,7 @@ class Task extends Component {
 
   componentDidUpdate = () => {
     if (this.state.timeRemaining <= 0) {
-      this.props.clearTaskAfterExpired(this.props.index);
+      this.props.clearTaskAfterExpired(this.props.taskId);
     }
   };
 
@@ -32,7 +33,7 @@ class Task extends Component {
   };
 
   render() {
-    const { name, index, isCompleted, toggleDoneNotDone } = this.props;
+    const { name, taskId, isCompleted, toggleDoneNotDone } = this.props;
 
     const { timeRemaining } = this.state;
 
@@ -45,7 +46,7 @@ class Task extends Component {
     return (
       <ul>
         <li
-          onClick={event => toggleDoneNotDone(index, event)}
+          onClick={event => toggleDoneNotDone(taskId, event)}
           className={doneNotDone}
         >
           {timeRemaining > 3600 && (
