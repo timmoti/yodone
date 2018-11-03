@@ -7,11 +7,20 @@ import PasswordForgetLink from '../password-forget/PasswordForgetLink';
 
 const LoginPage = ({ history }) => {
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login devise grid">
+      <h1 className="title">
+        <a href="/">
+          <img src="../images/logo.svg" className="logo" />
+          Yodone
+        </a>
+      </h1>
       <LoginForm history={history} />
-      <PasswordForgetLink />
-      <SignUpLink />
+      <span className="links">
+        <SignUpLink />
+      </span>
+      <span className="links">
+        <PasswordForgetLink />
+      </span>
     </div>
   );
 };

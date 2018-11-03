@@ -42,22 +42,29 @@ class LoginForm extends Component {
     const { email, password } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          type="email"
-          value={email}
-          onChange={event => this.setState({ email: event.target.value })}
-          placeholder="Email Address"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={event => this.setState({ password: event.target.value })}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Sign In</button>
+      <form onSubmit={this.onSubmit} className="new_user" id="new_user">
+        <div className="field">
+          <input
+            autoFocus
+            type="email"
+            value={email}
+            onChange={event => this.setState({ email: event.target.value })}
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div className="field">
+          <input
+            type="password"
+            value={password}
+            onChange={event => this.setState({ password: event.target.value })}
+            placeholder="Password"
+            required
+          />
+        </div>
+        <div className="action">
+          <input type="submit" name="commit" value="Login" />
+        </div>
       </form>
     );
   }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './Task.css';
 
 class Task extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      timeRemaining: 3600
+      timeRemaining: 120
     };
   }
 
@@ -33,39 +32,41 @@ class Task extends Component {
   };
 
   render() {
-    const { name, taskId, isCompleted, toggleDoneNotDone } = this.props;
+    const { name, taskId, toggleDoneNotDone } = this.props;
 
     const { timeRemaining } = this.state;
 
-    const doneNotDone = isCompleted === true ? 'completed' : 'uncompleted';
-
-    const timeDisplayHrs = `${Math.floor(timeRemaining / (60 * 60))} hrs left`;
-    const timeDisplayMins = `${Math.ceil(timeRemaining / 60)} mins left`;
-    const timeDisplaySecs = `${Math.ceil(timeRemaining)} secs left`;
+    const timeDisplayHrs = `${Math.floor(timeRemaining / (60 * 60))}h`;
+    const timeDisplayMins = `${Math.ceil(timeRemaining / 60)}m`;
+    const timeDisplaySecs = `${Math.ceil(timeRemaining)}s`;
 
     return (
-      <ul>
-        <li
-          onClick={event => toggleDoneNotDone(taskId, event)}
-          className={doneNotDone}
-        >
+      <li className="task">
+        <label htmlFor="todo" className="item">
+          <input
+            type="checkbox"
+            id={taskId}
+            className="hidden checkbox"
+            onClick={event => toggleDoneNotDone(taskId, event)}
+          />
+          <label htmlFor={taskId} className="cbx">
+            <svg width="14px" height="12px" viewBox="0 0 14 12">
+              <polyline points="1 7.6 5 11 13 1" />
+            </svg>
+          </label>
+          <label htmlFor={taskId} className="cbx-lbl">
+            <span className="taskname">{name}</span>
+          </label>
           {timeRemaining > 3600 && (
-            <div>
-              {name} {timeDisplayHrs}
-            </div>
+            <span className="timeleft">{timeDisplayHrs}</span>
           )}
-
           {timeRemaining <= 3600 && timeRemaining > 60 ? (
-            <div>
-              {name} {timeDisplayMins}
-            </div>
+            <span className="timeleft">{timeDisplayMins}</span>
           ) : (
-            <div>
-              {name} {timeDisplaySecs}
-            </div>
+            <span className="timeleft">{timeDisplaySecs}</span>
           )}
-        </li>
-      </ul>
+        </label>
+      </li>
     );
   }
 }

@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../../routes/routes';
 
-const SignUpLink = () => {
+const LoginLink = () => {
   return (
     <p>
-      <Link to={routes.SIGN_UP}>Sign Up</Link>
+      <Link to={routes.LOGIN}>Login</Link>
     </p>
   );
 };
 
-export default SignUpLink;
+export default LoginLink;

@@ -1,13 +1,19 @@
 import React from 'react';
 
 import withAuthorization from '../withAuthorization';
-import List from '../List';
+import TaskList from '../TaskList';
 
 const TodayPage = () => {
   return (
-    <div>
-      <h1>Today</h1>
-      <List />
+    <div id="today" className="grid tasks">
+      <h1 className="title">
+        <a href="/today">
+          <img src="../images/logo.svg" className="logo" />
+          Yodone
+        </a>
+      </h1>
+      <span className="view">Today</span>
+      <TaskList />
     </div>
   );
 };

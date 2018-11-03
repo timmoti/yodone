@@ -7,8 +7,14 @@ import withAuthorization from '../withAuthorization';
 const SettingsPage = ({ history }) => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <div>
-        <p>Email: {authUser.email}</p>
+      <div id="settings" className="settings grid devise">
+        <h1 className="title">
+          <a href="/today">
+            <img src="../images/logo.svg" className="logo" />
+            Yodone
+          </a>
+        </h1>
+        <span className="section">Change Password</span>
         <PasswordChangeForm history={history} />
       </div>
     )}

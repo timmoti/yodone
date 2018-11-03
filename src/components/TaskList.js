@@ -3,8 +3,9 @@ import Task from './task/Task';
 import TaskCreationBar from './TaskCreationBar';
 import { db } from '../firebase/index';
 import withAuthorization from './withAuthorization';
+import List from '@material-ui/core/List';
 
-class List extends Component {
+class TaskList extends Component {
   constructor(props) {
     super(props);
 
@@ -26,11 +27,10 @@ class List extends Component {
 
   addNewTask = async input => {
     const newArray = [...this.state.taskArray];
-    // expiryTime = firestore.Timestamp;
     const task = {
       name: input,
       isCompleted: false,
-      timeExpired: new Date().getTime() + 60 * 60 * 1000,
+      timeExpired: new Date().getTime() + 2 * 60 * 1000,
       isExpired: false
     };
     const taskRef = await db.createTaskInDb(this.props.authUser.uid, task);
@@ -78,17 +78,19 @@ class List extends Component {
   render() {
     const { taskArray } = this.state;
     return (
-      <div>
+      <div id="tasks">
         <TaskCreationBar addNewTask={this.addNewTask} />
         <div>
-          {taskArray.map(task => (
-            <Task
-              key={task.taskId}
-              {...task}
-              toggleDoneNotDone={this.toggleDoneNotDone}
-              clearTaskAfterExpired={this.clearTaskAfterExpired}
-            />
-          ))}
+          <List>
+            {taskArray.map(task => (
+              <Task
+                key={task.taskId}
+                {...task}
+                toggleDoneNotDone={this.toggleDoneNotDone}
+                clearTaskAfterExpired={this.clearTaskAfterExpired}
+              />
+            ))}
+          </List>
         </div>
       </div>
     );
@@ -97,4 +99,4 @@ class List extends Component {
 
 const authCondition = authUser => !!authUser;
 
-export default withAuthorization(authCondition)(List);
+export default withAuthorization(authCondition)(TaskList);

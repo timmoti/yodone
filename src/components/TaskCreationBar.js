@@ -25,12 +25,18 @@ class TaskCreationBar extends Component {
   render() {
     const { input } = this.state;
     return (
-      <form onSubmit={event => this.handleSubmit(input, event)}>
+      <form
+        onSubmit={event => this.handleSubmit(input, event)}
+        className="add_task"
+        id="add_task"
+      >
         <input
+          autoFocus
           type="text"
           value={input}
           onChange={event => this.handleChange(event)}
-          placeholder="Add stuff"
+          placeholder="Add stuff..."
+          id="new"
         />
       </form>
     );

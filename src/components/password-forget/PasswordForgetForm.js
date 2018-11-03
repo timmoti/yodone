@@ -38,13 +38,16 @@ class PasswordForgetForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          autoFocus
           type="email"
           value={email}
           onChange={event => this.setState({ email: event.target.value })}
-          placeholder="Email Address"
+          placeholder="Email"
           required
         />
-        <button type="submit">Reset my Password</button>
+        <div className="action">
+          <input type="submit" name="commit" value="Reset Password" />
+        </div>
       </form>
     );
   }

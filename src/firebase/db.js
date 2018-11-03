@@ -16,25 +16,6 @@ export const createUserInDb = async (id, email) => {
   }
 };
 
-// export const getAllUsers = async () => {
-//   try {
-//     const querySnapshot = await db.collection('users').get();
-//     querySnapshot.forEach(doc => console.log(doc.id, doc.data()));
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-
-export const getUser = async userId => {
-  try {
-    const docRef = db.collection('users').doc(userId);
-    const user = await docRef.get();
-    return user.data();
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 //Task APIs
 
 export const createTaskInDb = async (id, task) => {

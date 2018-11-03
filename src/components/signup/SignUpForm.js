@@ -3,7 +3,6 @@ import { auth } from '../../firebase/firebase';
 import { db } from '../../firebase/index';
 import * as routes from '../../routes/routes';
 import swal from 'sweetalert';
-import { Link } from 'react-router-dom';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -51,26 +50,29 @@ class SignUpForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
-          type="email"
-          value={email}
-          onChange={event => this.setState({ email: event.target.value })}
-          placeholder="Email Address"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={event => this.setState({ password: event.target.value })}
-          placeholder="Password"
-          required
-          minLength="6"
-        />
-        <button type="submit">Sign Up</button>
-
-        <p>
-          <Link to={routes.LOGIN}>Login</Link>
-        </p>
+        <div className="field">
+          <input
+            autoFocus
+            type="email"
+            value={email}
+            onChange={event => this.setState({ email: event.target.value })}
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div className="field">
+          <input
+            type="password"
+            value={password}
+            onChange={event => this.setState({ password: event.target.value })}
+            placeholder="Password"
+            required
+            minLength="6"
+          />
+        </div>
+        <div className="action">
+          <input type="submit" name="commit" value="Sign Up" />
+        </div>
       </form>
     );
   }

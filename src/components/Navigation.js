@@ -1,8 +1,9 @@
 import React from 'react';
 
 import AuthUserContext from './AuthUserContext';
-import SignOutButton from './SignOutButton';
+import SignOutLink from './SignOutLink';
 import SettingsPageLink from './settings/SettingsPageLink';
+import TodayPageLink from './today/TodayPageLink';
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
@@ -12,9 +13,18 @@ const Navigation = () => (
 
 const NavigationAuth = () => {
   return (
-    <div>
-      <SignOutButton />
-      <SettingsPageLink />
+    <div className="devise">
+      <nav className="nav">
+        <span className="link">
+          <TodayPageLink />
+        </span>
+        <span className="link">
+          <SettingsPageLink />
+        </span>
+      </nav>
+      <div className="signout">
+        <SignOutLink />
+      </div>
     </div>
   );
 };

@@ -44,21 +44,33 @@ class PasswordChangeForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          value={passwordOne}
-          onChange={event => this.setState({ passwordOne: event.target.value })}
-          type="password"
-          placeholder="New Password"
-          required
-          minLength="6"
-        />
-        <input
-          value={passwordTwo}
-          onChange={event => this.setState({ passwordTwo: event.target.value })}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-        <button type="submit">Reset My Password</button>
+        <div className="field">
+          <input
+            autoFocus
+            value={passwordOne}
+            onChange={event =>
+              this.setState({ passwordOne: event.target.value })
+            }
+            type="password"
+            placeholder="New Password"
+            required
+            minLength="6"
+          />
+        </div>
+        <div>
+          <input
+            value={passwordTwo}
+            onChange={event =>
+              this.setState({ passwordTwo: event.target.value })
+            }
+            type="password"
+            placeholder="Confirm Password"
+            required
+          />
+        </div>
+        <div className="action">
+          <input type="submit" name="commit" value="Reset Password" />
+        </div>
       </form>
     );
   }
