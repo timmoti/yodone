@@ -5,7 +5,7 @@ class Task extends Component {
     super(props);
 
     this.state = {
-      timeRemaining: 120
+      timeRemaining: null
     };
   }
 

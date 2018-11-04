@@ -3,7 +3,6 @@ import Task from './Task';
 import TaskCreationBar from './TaskCreationBar';
 import { db } from '../firebase/index';
 import withAuthorization from './withAuthorization';
-import List from '@material-ui/core/List';
 
 class TaskList extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class TaskList extends Component {
     const task = {
       name: input,
       isCompleted: false,
-      timeExpired: new Date().getTime() + 2 * 60 * 1000,
+      timeExpired: new Date().getTime() + 24 * 60 * 60 * 1000,
       isExpired: false
     };
     const taskRef = await db.createTaskInDb(this.props.authUser.uid, task);
@@ -81,16 +80,14 @@ class TaskList extends Component {
       <div id="tasks">
         <TaskCreationBar addNewTask={this.addNewTask} />
         <div>
-          <List>
-            {taskArray.map(task => (
-              <Task
-                key={task.taskId}
-                {...task}
-                toggleDoneNotDone={this.toggleDoneNotDone}
-                clearTaskAfterExpired={this.clearTaskAfterExpired}
-              />
-            ))}
-          </List>
+          {taskArray.map(task => (
+            <Task
+              key={task.taskId}
+              {...task}
+              toggleDoneNotDone={this.toggleDoneNotDone}
+              clearTaskAfterExpired={this.clearTaskAfterExpired}
+            />
+          ))}
         </div>
       </div>
     );
