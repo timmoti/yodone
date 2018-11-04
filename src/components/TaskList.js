@@ -77,9 +77,9 @@ class TaskList extends Component {
   render() {
     const { taskArray } = this.state;
     return (
-      <div id="tasks">
+      <div>
         <TaskCreationBar addNewTask={this.addNewTask} />
-        <div>
+        <ul id="tasks">
           {taskArray.map(task => (
             <Task
               key={task.taskId}
@@ -88,7 +88,7 @@ class TaskList extends Component {
               clearTaskAfterExpired={this.clearTaskAfterExpired}
             />
           ))}
-        </div>
+        </ul>
       </div>
     );
   }
