@@ -4,16 +4,12 @@ import { withRouter } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import SignUpLink from '../signup/SignUpLink';
 import PasswordForgetLink from '../password-forget/PasswordForgetLink';
+import Logo from '../Logo';
 
 const LoginPage = ({ history }) => {
   return (
     <div className="login devise grid">
-      <h1 className="title">
-        <a href="/">
-          <img src="../images/logo.svg" className="logo" />
-          Yodone
-        </a>
-      </h1>
+      <Logo />
       <LoginForm history={history} />
       <span className="links">
         <SignUpLink />

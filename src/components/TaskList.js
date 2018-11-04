@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Task from './task/Task';
+import Task from './Task';
 import TaskCreationBar from './TaskCreationBar';
 import { db } from '../firebase/index';
 import withAuthorization from './withAuthorization';

@@ -7,11 +7,8 @@
   background: #1f2126;
 }
 
-.logo {
-  display: inline-block;
-  vertical-align: top;
-  height: 16px;
-  margin: 3px 8px 0 0;
+.grid .title a {
+  padding: 0 0 0 10px;
 }
 
 #main {
@@ -30,7 +27,19 @@ h1.title {
 }
 
 h1.title a {
+  display: flex;
+  position: relative;
   color: inherit;
+}
+
+h1.title a svg {
+  position: absolute;
+  left: 0;
+}
+
+h1.title a span {
+  position: relative;
+  left: 10px;
 }
 
 h1.title .icon {
@@ -271,12 +280,8 @@ h1.title .icon {
 
 .task .item .timeleft {
   position: absolute;
-  left: 453px;
+  right: 0;
 }
-
-/* .task .item .cbx-lbl .taskname {
-  padding-left: 30px;
-} */
 
 #new {
   margin: 16px 0 16px;

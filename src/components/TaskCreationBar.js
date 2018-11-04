@@ -29,6 +29,7 @@ class TaskCreationBar extends Component {
         onSubmit={event => this.handleSubmit(input, event)}
         className="add_task"
         id="add_task"
+        autoComplete="off"
       >
         <input
           autoFocus

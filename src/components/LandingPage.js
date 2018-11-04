@@ -1,17 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../routes/routes';
-import './App.css';
+import Logo from './Logo';
 
 const LandingPage = () => {
   return (
     <div className="home devise grid">
-      <h1 className="title">
-        <a href="/">
-          <img src="../images/logo.svg" className="logo" />
-          Yodone
-        </a>
-      </h1>
+      <Logo />
       <ul id="tasks">
         <li className="task">
           <label htmlFor="todo" className="item">

@@ -3,17 +3,13 @@ import React from 'react';
 import AuthUserContext from '../AuthUserContext';
 import PasswordChangeForm from './PasswordChangeForm';
 import withAuthorization from '../withAuthorization';
+import Logo from '../Logo';
 
 const SettingsPage = ({ history }) => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div id="settings" className="settings grid devise">
-        <h1 className="title">
-          <a href="/today">
-            <img src="../images/logo.svg" className="logo" />
-            Yodone
-          </a>
-        </h1>
+        <Logo />
         <span className="section">Change Password</span>
         <PasswordChangeForm history={history} />
       </div>
