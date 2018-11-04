@@ -42,16 +42,6 @@ h1.title a span {
   left: 10px;
 }
 
-h1.title .icon {
-  float: right;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.32);
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  line-height: 22px;
-}
-
 #tasks,
 #today {
   position: relative;
@@ -353,4 +343,26 @@ nav {
 .swal-footer {
   background-color: #1fcc92;
   overflow: hidden;
+}
+
+/* Media queries */
+@media screen and (max-width: 640px) {
+  h1.title a {
+    float: none;
+    margin-left: 16px;
+    line-height: auto;
+    margin-top: 2px;
+    vertical-align: top;
+  }
+  #main {
+    width: 100%;
+    padding: 32px;
+  }
+  #new {
+    margin: 24px 0;
+  }
+  #tasks .item a.delete,
+  .grid .task .move {
+    display: inline-block;
+  }
 }
