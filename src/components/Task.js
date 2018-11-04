@@ -36,7 +36,7 @@ class Task extends Component {
 
     const { timeRemaining } = this.state;
 
-    const timeDisplayHrs = `${Math.floor(timeRemaining / (60 * 60))}h`;
+    const timeDisplayHrs = `${Math.ceil(timeRemaining / (60 * 60))}h`;
     const timeDisplayMins = `${Math.ceil(timeRemaining / 60)}m`;
     const timeDisplaySecs = `${Math.ceil(timeRemaining)}s`;
 
@@ -57,14 +57,13 @@ class Task extends Component {
           <label htmlFor={taskId} className="cbx-lbl">
             <span className="taskname">{name}</span>
           </label>
-          {timeRemaining > 3600 && (
-            <span className="timeleft">{timeDisplayHrs}</span>
-          )}
-          {timeRemaining <= 3600 && timeRemaining > 60 ? (
-            <span className="timeleft">{timeDisplayMins}</span>
-          ) : (
-            <span className="timeleft">{timeDisplaySecs}</span>
-          )}
+          <span className="timeleft">
+            {timeRemaining > 3600
+              ? timeDisplayHrs
+              : timeRemaining <= 3600 && timeRemaining > 60
+                ? timeDisplayMins
+                : timeDisplaySecs}
+          </span>
         </label>
       </li>
     );
