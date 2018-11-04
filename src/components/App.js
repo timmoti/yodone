@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-// import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-// import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Navigation from './Navigation';
 import LandingPage from './LandingPage';

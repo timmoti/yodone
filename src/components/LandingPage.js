@@ -1,9 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import * as routes from '../routes/routes';
 import Logo from './Logo';
+import AuthUserContext from './AuthUserContext';
 
-const LandingPage = () => {
+const LandingPage = ({ history }) => (
+  <AuthUserContext.Consumer>
+    {authUser =>
+      authUser ? history.push(routes.TODAY) : <LandingPageNonAuth />
+    }
+  </AuthUserContext.Consumer>
+);
+
+const LandingPageNonAuth = () => {
   return (
     <div className="home devise grid">
       <Logo />
@@ -45,4 +54,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default withRouter(LandingPage);
