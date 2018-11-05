@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from '../Icon';
-import { ICONS } from '../constants';
+import Icon from '../../Icon';
+import { ICONS } from '../../constants';
 
 const Logo = () => {
   return (

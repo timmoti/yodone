@@ -3,7 +3,7 @@ import React from 'react';
 import AuthUserContext from '../AuthUserContext';
 import PasswordChangeForm from './PasswordChangeForm';
 import withAuthorization from '../withAuthorization';
-import Logo from '../Logo';
+import Logo from '../icons/Logo';
 
 const SettingsPage = ({ history }) => (
   <AuthUserContext.Consumer>

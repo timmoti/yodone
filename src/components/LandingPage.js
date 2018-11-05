@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import * as routes from '../routes/routes';
-import Logo from './Logo';
+import Logo from './icons/Logo';
 import AuthUserContext from './AuthUserContext';
 
 const LandingPage = ({ history }) => (

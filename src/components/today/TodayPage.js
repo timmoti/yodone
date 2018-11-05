@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../Logo';
+import Logo from '../icons/Logo';
 
 import withAuthorization from '../withAuthorization';
 import TaskList from '../TaskList';

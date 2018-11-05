@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 import LoginLink from '../login/LoginLink';
-import Logo from '../Logo';
+import Logo from '../icons/Logo';
 
 const SignUpPage = ({ history }) => {
   return (

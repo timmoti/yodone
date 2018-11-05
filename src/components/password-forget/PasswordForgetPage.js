@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PasswordForgetForm from './PasswordForgetForm';
 import SignUpLink from '../signup/SignUpLink';
 import LoginLink from '../login/LoginLink';
-import Logo from '../Logo';
+import Logo from '../icons/Logo';
 
 const PasswordForgetPage = ({ history }) => {
   return (
