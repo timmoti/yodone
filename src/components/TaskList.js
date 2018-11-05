@@ -30,7 +30,8 @@ class TaskList extends Component {
       name: input,
       isCompleted: false,
       timeExpired: new Date().getTime() + 24 * 60 * 60 * 1000,
-      isExpired: false
+      isExpired: false,
+      timeCreated: new Date().getTime()
     };
     const taskRef = await db.createTaskInDb(this.props.authUser.uid, task);
     task.taskId = taskRef.id;
@@ -74,6 +75,11 @@ class TaskList extends Component {
     db.updateExpired(this.props.authUser.uid, id);
   };
 
+  // editTask = (id) => {
+  //   const newArray = [...this.state.taskArray];
+  //   const task =
+  // }
+
   render() {
     const { taskArray } = this.state;
     return (
@@ -86,6 +92,7 @@ class TaskList extends Component {
               {...task}
               toggleDoneNotDone={this.toggleDoneNotDone}
               clearTaskAfterExpired={this.clearTaskAfterExpired}
+              // editTask={this.editTask}
             />
           ))}
         </ul>
