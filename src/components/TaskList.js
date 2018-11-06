@@ -42,7 +42,6 @@ class TaskList extends Component {
     this.setState(() => ({
       taskArray: newArray
     }));
-    console.log(this.state);
   };
 
   toggleDoneNotDone = id => {
