@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { RIEInput } from 'riek';
+import { db } from '../firebase/index';
+import Trash from './icons/Trash';
 
 class Task extends Component {
   constructor(props) {
@@ -31,8 +34,12 @@ class Task extends Component {
     clearInterval(this.timerID);
   };
 
+  // editTask = () => {
+  //   db.updateTask(this.props.userId, this.props.taskId, this.props.name);
+  // };
+
   render() {
-    const { name, taskId, toggleDoneNotDone } = this.props;
+    const { name, taskId, toggleDoneNotDone, handleDelete } = this.props;
 
     const { timeRemaining } = this.state;
 
@@ -54,8 +61,23 @@ class Task extends Component {
               <polyline points="1 7.6 5 11 13 1" />
             </svg>
           </label>
-          <label htmlFor={taskId} className="cbx-lbl">
-            <span className="taskname">{name}</span>
+          <label className="cbx-lbl">
+            {/* <input
+              type="text"
+              readOnly
+              id={taskId}
+              className="taskname"
+              defaultValue={name}
+            /> */}
+            {/* <RIEInput value={name} propName="name" change={this.editTask} /> */}
+            <span
+              suppressContentEditableWarning={true}
+              contentEditable="true"
+              className="taskname"
+            >
+              {name}
+            </span>
+            <Trash handleDelete={handleDelete} taskId={taskId} />
           </label>
           <span className="timeleft">
             {timeRemaining > 3600

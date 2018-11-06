@@ -173,21 +173,16 @@ h1.title a span {
   color: #1fcc92;
 }
 
-.grid .item .cbx-lbl a.delete {
+.grid .item .cbx-lbl button.delete {
   display: none;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.24);
+  cursor: 'pointer';
   margin-left: 12px;
-  vertical-align: top;
-  width: 16px;
-  height: 16px;
-  color: rgba(255, 255, 255, 0.32);
+  border: transparent;
+  vertical-align: bottom;
 }
 
-.grid .item .cbx-lbl a.delete .icon {
-  width: 16px;
-  height: 16px;
-  margin-top: 4px;
+.grid .item .cbx-lbl button.delete:hover {
+  cursor: pointer;
 }
 
 .grid .task .move {
@@ -241,7 +236,7 @@ h1.title a span {
   text-decoration: line-through;
 }
 
-#tasks .item:hover a.delete,
+#tasks .item:hover button.delete,
 #tasks .task:hover .move {
   display: inline-block;
 }
@@ -258,10 +253,6 @@ h1.title a span {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 25px;
-}
-
-.grid .item .cbx-lbl a.delete:hover {
-  color: #e54322 !important;
 }
 
 .grid .item input {
@@ -308,7 +299,6 @@ nav {
 }
 
 .devise a {
-  /* padding: 10px 0 0 0; */
   color: #fff;
   text-decoration: none;
   font-size: 16px;
@@ -365,7 +355,7 @@ nav {
   #new {
     margin: 24px 0;
   }
-  #tasks .item a.delete,
+  #tasks .item button.delete,
   .grid .task .move {
     display: inline-block;
   }

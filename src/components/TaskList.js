@@ -31,7 +31,8 @@ class TaskList extends Component {
       isCompleted: false,
       timeExpired: new Date().getTime() + 24 * 60 * 60 * 1000,
       isExpired: false,
-      timeCreated: new Date().getTime()
+      timeCreated: new Date().getTime(),
+      isDeleted: false
     };
     const taskRef = await db.createTaskInDb(this.props.authUser.uid, task);
     task.taskId = taskRef.id;
@@ -75,9 +76,19 @@ class TaskList extends Component {
     db.updateExpired(this.props.authUser.uid, id);
   };
 
+  handleDelete = id => {
+    const newArray = [...this.state.taskArray];
+    const task = newArray.find(task => task.taskId === id);
+    task.isDeleted = true;
+    this.setState(() => ({
+      taskArray: newArray.filter(task => !task.isDeleted)
+    }));
+    db.deleteTask(this.props.authUser.uid, id);
+  };
+
   // editTask = (id) => {
   //   const newArray = [...this.state.taskArray];
-  //   const task =
+  //   const task = newArray.
   // }
 
   render() {
@@ -92,6 +103,7 @@ class TaskList extends Component {
               {...task}
               toggleDoneNotDone={this.toggleDoneNotDone}
               clearTaskAfterExpired={this.clearTaskAfterExpired}
+              handleDelete={this.handleDelete}
               // editTask={this.editTask}
             />
           ))}
