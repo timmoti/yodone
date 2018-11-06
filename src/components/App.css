@@ -355,7 +355,7 @@ nav {
   #new {
     margin: 24px 0;
   }
-  #tasks .item button.delete,
+  #tasks .item .cbx-lbl button.delete,
   .grid .task .move {
     display: inline-block;
   }

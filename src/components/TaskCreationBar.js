@@ -30,6 +30,8 @@ class TaskCreationBar extends Component {
         className="add_task"
         id="add_task"
         autoComplete="off"
+        acceptCharset="UTF-8"
+        action="/today"
       >
         <input
           autoFocus
