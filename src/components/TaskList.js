@@ -32,7 +32,8 @@ class TaskList extends Component {
       timeExpired: new Date().getTime() + 24 * 60 * 60 * 1000,
       isExpired: false,
       timeCreated: new Date().getTime(),
-      isDeleted: false
+      isDeleted: false,
+      timeCompleted: null
     };
     const taskRef = await db.createTaskInDb(this.props.authUser.uid, task);
     task.taskId = taskRef.id;
@@ -50,10 +51,20 @@ class TaskList extends Component {
       const task = newArray.find(task => task.taskId === id);
 
       task.isCompleted = !task.isCompleted;
+      if (task.isCompleted === true) {
+        task.timeCompleted = new Date().getTime();
+      } else {
+        task.timeCompleted = null;
+      }
       this.setState(() => ({
         taskArray: newArray
       }));
-      db.updateCompleted(this.props.authUser.uid, id, task.isCompleted);
+      db.updateCompleted(
+        this.props.authUser.uid,
+        id,
+        task.isCompleted,
+        task.timeCompleted
+      );
 
       // Wait for 5 seconds after marking task as complete before clearing from screen
       setTimeout(() => {

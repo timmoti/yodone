@@ -59,14 +59,20 @@ export const updateExpired = async (userId, taskId) => {
   }
 };
 
-export const updateCompleted = async (userId, taskId, isCompleted) => {
+export const updateCompleted = async (
+  userId,
+  taskId,
+  isCompleted,
+  timeCompleted
+) => {
   try {
     db.collection('users')
       .doc(userId)
       .collection('tasks')
       .doc(taskId)
       .update({
-        isCompleted: isCompleted
+        isCompleted: isCompleted,
+        timeCompleted: timeCompleted
       });
   } catch (err) {
     console.error(err);
@@ -87,17 +93,17 @@ export const updateTask = async (userId, taskId, name) => {
   }
 };
 
-export const deleteTask = async(userId, taskId) => {
-  try{
+export const deleteTask = async (userId, taskId) => {
+  try {
     db.collection('users')
       .doc(userId)
       .collection('tasks')
       .doc(taskId)
-      .delete()
-  } catch(err) {
+      .delete();
+  } catch (err) {
     console.error(err);
   }
-}
+};
 
 export const getValidTasks = async userId => {
   try {
