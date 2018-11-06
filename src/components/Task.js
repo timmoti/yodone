@@ -80,11 +80,13 @@ class Task extends Component {
             <Trash handleDelete={handleDelete} taskId={taskId} />
           </label>
           <span className="timeleft">
-            {timeRemaining > 3600
-              ? timeDisplayHrs
-              : timeRemaining <= 3600 && timeRemaining > 60
-                ? timeDisplayMins
-                : timeDisplaySecs}
+            {timeRemaining === null
+              ? ''
+              : timeRemaining > 3600
+                ? timeDisplayHrs
+                : timeRemaining <= 3600 && timeRemaining > 60
+                  ? timeDisplayMins
+                  : timeDisplaySecs}
           </span>
         </label>
       </li>
