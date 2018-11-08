@@ -34,7 +34,6 @@ class TaskCreationBar extends Component {
         action="/today"
       >
         <input
-          autoFocus
           autoCorrect="off"
           type="text"
           value={input}
