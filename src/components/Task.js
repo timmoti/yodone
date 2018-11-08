@@ -28,7 +28,7 @@ class Task extends Component {
   };
 
   componentDidUpdate = () => {
-    if (this.state.timeRemaining <= 0) {
+    if (this.state.timeRemaining !== null && this.state.timeRemaining <= 0) {
       this.props.clearTaskAfterExpired(this.props.taskId);
     }
   };
