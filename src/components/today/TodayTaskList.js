@@ -25,11 +25,12 @@ class TodayTaskList extends Component {
   };
 
   addNewTask = async input => {
+    const TWENTYFOURHOURS = 24 * 60 * 60 * 1000;
     const newArray = [...this.state.taskArray];
     const task = {
       name: input,
       isCompleted: false,
-      timeExpired: new Date().getTime() + 24 * 60 * 60 * 1000,
+      timeExpired: new Date().getTime() + TWENTYFOURHOURS,
       isExpired: false,
       timeCreated: new Date().getTime(),
       isDeleted: false,
@@ -120,7 +121,6 @@ class TodayTaskList extends Component {
             />
           ))}
         </ul>
-        {console.log(this.props.history, this.props.match, this.props.location)}
       </div>
     );
   }

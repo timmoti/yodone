@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { RIEInput } from 'riek';
 import { db } from '../firebase/index';
 import Trash from './icons/Trash';
+import Forward from './icons/Forward';
 import * as routes from '../routes/routes';
+import { withRouter } from 'react-router-dom';
 
 class Task extends Component {
   constructor(props) {
@@ -43,7 +45,14 @@ class Task extends Component {
   // };
 
   render() {
-    const { name, taskId, toggleDoneNotDone, handleDelete } = this.props;
+    const {
+      name,
+      taskId,
+      toggleDoneNotDone,
+      handleDelete,
+      handleTaskForward,
+      match
+    } = this.props;
 
     const { timeRemaining } = this.state;
 
@@ -84,6 +93,9 @@ class Task extends Component {
             </span>
           </label>
           <Trash handleDelete={handleDelete} taskId={taskId} />
+          {match.path === routes.BACKLOG && (
+            <Forward handleTaskForward={handleTaskForward} taskId={taskId} />
+          )}
           <span className="timeleft">
             {timeRemaining === null
               ? ''
@@ -99,4 +111,4 @@ class Task extends Component {
   }
 }
 
-export default Task;
+export default withRouter(Task);

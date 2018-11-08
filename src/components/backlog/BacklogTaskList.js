@@ -98,6 +98,18 @@ class BacklogTaskList extends Component {
     db.deleteTask(this.props.authUser.uid, id);
   };
 
+  handleTaskForward = id => {
+    const TWENTYFOURHOURS = 24 * 60 * 60 * 1000;
+    const newArray = [...this.state.taskArray];
+    const task = newArray.find(task => task.taskId === id);
+    task.location = 'today';
+    task.timeExpired = new Date().getTime() + TWENTYFOURHOURS;
+    this.setState(() => ({
+      taskArray: newArray.filter(task => task.location === 'backlog')
+    }));
+    db.updateTaskLocation(this.props.authUser.uid, id, task.timeExpired);
+  };
+
   // editTask = (id) => {
   //   const newArray = [...this.state.taskArray];
   //   const task = newArray.
@@ -114,8 +126,8 @@ class BacklogTaskList extends Component {
               key={task.taskId}
               {...task}
               toggleDoneNotDone={this.toggleDoneNotDone}
-              // clearTaskAfterExpired={this.clearTaskAfterExpired}
               handleDelete={this.handleDelete}
+              handleTaskForward={this.handleTaskForward}
               match={this.props.match}
               // editTask={this.editTask}
             />

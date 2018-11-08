@@ -178,7 +178,8 @@ h1.title a span {
   color: #1fcc92;
 }
 
-.grid .item button.delete {
+.grid .item button.delete,
+.grid .item button.forward {
   display: none;
   cursor: 'pointer';
   margin-left: 12px;
@@ -186,7 +187,8 @@ h1.title a span {
   vertical-align: bottom;
 }
 
-.grid .item button.delete:hover {
+.grid .item button.delete:hover,
+.grid .item button.forward:hover {
   cursor: pointer;
 }
 
@@ -242,6 +244,7 @@ h1.title a span {
 }
 
 #tasks .item:hover button.delete,
+#tasks .item:hover button.forward,
 #tasks .task:hover .move {
   display: inline-block;
 }
@@ -362,6 +365,7 @@ nav {
     margin: 24px 0;
   }
   #tasks .item button.delete,
+  #tasks .item button.forward,
   .grid .task .move {
     display: inline-block;
   }

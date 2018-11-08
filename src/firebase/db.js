@@ -93,6 +93,21 @@ export const updateTask = async (userId, taskId, name) => {
   }
 };
 
+export const updateTaskLocation = async (userId, taskId, timeExpired) => {
+  try {
+    db.collection('users')
+      .doc(userId)
+      .collection('tasks')
+      .doc(taskId)
+      .update({
+        location: 'today',
+        timeExpired: timeExpired
+      });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export const deleteTask = async (userId, taskId) => {
   try {
     db.collection('users')
