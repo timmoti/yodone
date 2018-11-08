@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Task from './Task';
-import TaskCreationBar from './TaskCreationBar';
-import { db } from '../firebase/index';
-import withAuthorization from './withAuthorization';
+import Task from '../Task';
+import TaskCreationBar from '../TaskCreationBar';
+import { db } from '../../firebase/index';
+import withAuthorization from '../withAuthorization';
 
-class TaskList extends Component {
+class BacklogTaskList extends Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,9 @@ class TaskList extends Component {
 
   componentDidMount = async () => {
     try {
-      const loadedArray = await db.getValidTasks(this.props.authUser.uid);
+      const loadedArray = await db.getValidBacklogTasks(
+        this.props.authUser.uid
+      );
       this.setState({
         taskArray: loadedArray
       });
@@ -29,11 +31,12 @@ class TaskList extends Component {
     const task = {
       name: input,
       isCompleted: false,
-      timeExpired: new Date().getTime() + 24 * 60 * 60 * 1000,
       isExpired: false,
       timeCreated: new Date().getTime(),
+      timeExpired: null,
       isDeleted: false,
-      timeCompleted: null
+      timeCompleted: null,
+      location: 'backlog'
     };
     const taskRef = await db.createTaskInDb(this.props.authUser.uid, task);
     task.taskId = taskRef.id;
@@ -65,7 +68,6 @@ class TaskList extends Component {
         task.timeCompleted
       );
 
-      // Wait for 5 seconds after marking task as complete before clearing from screen
       setTimeout(() => {
         this.setState(() => ({
           taskArray: newArray.filter(task => !task.isCompleted)
@@ -76,15 +78,15 @@ class TaskList extends Component {
     }
   };
 
-  clearTaskAfterExpired = id => {
-    const newArray = [...this.state.taskArray];
-    const task = newArray.find(task => task.taskId === id);
-    task.isExpired = true;
-    this.setState(() => ({
-      taskArray: newArray.filter(task => !task.isExpired)
-    }));
-    db.updateExpired(this.props.authUser.uid, id);
-  };
+  // clearTaskAfterExpired = id => {
+  //   const newArray = [...this.state.taskArray];
+  //   const task = newArray.find(task => task.taskId === id);
+  //   task.isExpired = true;
+  //   this.setState(() => ({
+  //     taskArray: newArray.filter(task => !task.isExpired)
+  //   }));
+  //   db.updateExpired(this.props.authUser.uid, id);
+  // };
 
   handleDelete = id => {
     const newArray = [...this.state.taskArray];
@@ -112,8 +114,9 @@ class TaskList extends Component {
               key={task.taskId}
               {...task}
               toggleDoneNotDone={this.toggleDoneNotDone}
-              clearTaskAfterExpired={this.clearTaskAfterExpired}
+              // clearTaskAfterExpired={this.clearTaskAfterExpired}
               handleDelete={this.handleDelete}
+              match={this.props.match}
               // editTask={this.editTask}
             />
           ))}
@@ -125,4 +128,4 @@ class TaskList extends Component {
 
 const authCondition = authUser => !!authUser;
 
-export default withAuthorization(authCondition)(TaskList);
+export default withAuthorization(authCondition)(BacklogTaskList);

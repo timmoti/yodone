@@ -173,7 +173,7 @@ h1.title a span {
   color: #1fcc92;
 }
 
-.grid .item .cbx-lbl button.delete {
+.grid .item button.delete {
   display: none;
   cursor: 'pointer';
   margin-left: 12px;
@@ -181,7 +181,7 @@ h1.title a span {
   vertical-align: bottom;
 }
 
-.grid .item .cbx-lbl button.delete:hover {
+.grid .item button.delete:hover {
   cursor: pointer;
 }
 
@@ -241,7 +241,8 @@ h1.title a span {
   display: inline-block;
 }
 
-#today .view {
+#today .view,
+#backlog .view {
   color: #1fcc92;
   font-size: 24px;
   font-weight: 600;
@@ -355,7 +356,7 @@ nav {
   #new {
     margin: 24px 0;
   }
-  #tasks .item .cbx-lbl button.delete,
+  #tasks .item button.delete,
   .grid .task .move {
     display: inline-block;
   }

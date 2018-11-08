@@ -105,7 +105,7 @@ export const deleteTask = async (userId, taskId) => {
   }
 };
 
-export const getValidTasks = async userId => {
+export const getValidTodayTasks = async userId => {
   try {
     const taskRef = await db
       .collection('users')
@@ -115,6 +115,27 @@ export const getValidTasks = async userId => {
     const query = await taskRef
       .where('isCompleted', '==', false)
       .where('timeExpired', '>', currentTime)
+      .get();
+    const taskArray = [];
+    query.forEach(doc => {
+      const task = doc.data();
+      taskArray.push(task);
+    });
+    return taskArray;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getValidBacklogTasks = async userId => {
+  try {
+    const taskRef = await db
+      .collection('users')
+      .doc(userId)
+      .collection('tasks');
+    const query = await taskRef
+      .where('isCompleted', '==', false)
+      .where('location', '==', 'backlog')
       .get();
     const taskArray = [];
     query.forEach(doc => {

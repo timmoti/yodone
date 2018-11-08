@@ -9,7 +9,7 @@ import LoginPage from './login/LoginPage';
 import PasswordForgetPage from './password-forget/PasswordForgetPage';
 import TodayPage from './today/TodayPage';
 import SettingsPage from './settings/SettingsPage';
-// import BacklogPage from './BacklogPage';
+import BacklogPage from './backlog/BacklogPage';
 
 import * as routes from '../routes/routes';
 import withAuthentication from './withAuthentication';
@@ -29,7 +29,7 @@ const App = () => {
         />
         <Route exact path={routes.TODAY} component={TodayPage} />
         <Route exact path={routes.SETTINGS} component={SettingsPage} />
-        {/* <Route exact path={routes.BACKLOG} component={BacklogPage} /> */}
+        <Route exact path={routes.BACKLOG} component={BacklogPage} />
       </div>
     </Router>
   );

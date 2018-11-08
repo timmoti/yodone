@@ -2,14 +2,14 @@ import React from 'react';
 import Logo from '../icons/Logo';
 
 import withAuthorization from '../withAuthorization';
-import TaskList from '../TaskList';
+import TodayTaskList from './TodayTaskList';
 
 const TodayPage = () => {
   return (
     <div id="today" className="grid tasks">
       <Logo />
       <span className="view">Today</span>
-      <TaskList />
+      <TodayTaskList />
     </div>
   );
 };

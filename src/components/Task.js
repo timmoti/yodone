@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { RIEInput } from 'riek';
 import { db } from '../firebase/index';
 import Trash from './icons/Trash';
+import * as routes from '../routes/routes';
 
 class Task extends Component {
   constructor(props) {
@@ -17,11 +18,13 @@ class Task extends Component {
   };
 
   tick = () => {
-    const setTimeRemaining =
-      (this.props.timeExpired - new Date().getTime()) / 1000;
-    this.setState({
-      timeRemaining: setTimeRemaining
-    });
+    if (this.props.match.path === routes.TODAY) {
+      const setTimeRemaining =
+        (this.props.timeExpired - new Date().getTime()) / 1000;
+      this.setState({
+        timeRemaining: setTimeRemaining
+      });
+    }
   };
 
   componentDidUpdate = () => {
@@ -34,6 +37,7 @@ class Task extends Component {
     clearInterval(this.timerID);
   };
 
+  //To implement editable tasks
   // editTask = () => {
   //   db.updateTask(this.props.userId, this.props.taskId, this.props.name);
   // };
@@ -62,6 +66,7 @@ class Task extends Component {
             </svg>
           </label>
           <label className="cbx-lbl">
+            {/* To implement editable tasks */}
             {/* <input
               type="text"
               readOnly
@@ -71,14 +76,14 @@ class Task extends Component {
             /> */}
             {/* <RIEInput value={name} propName="name" change={this.editTask} /> */}
             <span
-              suppressContentEditableWarning={true}
-              contentEditable="true"
+              // suppressContentEditableWarning={true}
+              // contentEditable="true"
               className="taskname"
             >
               {name}
             </span>
-            <Trash handleDelete={handleDelete} taskId={taskId} />
           </label>
+          <Trash handleDelete={handleDelete} taskId={taskId} />
           <span className="timeleft">
             {timeRemaining === null
               ? ''
