@@ -4,7 +4,7 @@ import Logo from '../icons/Logo';
 import withAuthorization from '../withAuthorization';
 import BacklogTaskList from '../backlog/BacklogTaskList';
 
-const BacklogPage = ({ history }) => {
+const BacklogPage = () => {
   return (
     <div id="backlog" className="grid tasks">
       <Logo />

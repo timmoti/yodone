@@ -26,9 +26,6 @@ const NavigationAuth = () => {
           <SettingsPageLink />
         </span>
       </nav>
-      <div className="signout">
-        <SignOutLink />
-      </div>
     </div>
   );
 };

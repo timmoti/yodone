@@ -4,12 +4,19 @@ import AuthUserContext from '../AuthUserContext';
 import PasswordChangeForm from './PasswordChangeForm';
 import withAuthorization from '../withAuthorization';
 import Logo from '../icons/Logo';
+import SignOutLink from '../SignOutLink';
 
 const SettingsPage = ({ history }) => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div id="settings" className="settings grid devise">
+        <div className='settings-header'>
         <Logo />
+        <span className="signout">
+          <SignOutLink />
+        </span>
+
+        </div>
         <span className="section">Change Password</span>
         <PasswordChangeForm history={history} />
       </div>

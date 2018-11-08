@@ -13,6 +13,7 @@ body {
 
 .grid .title a {
   padding: 0 0 0 10px;
+  width: 80px;
 }
 
 #main {
@@ -44,6 +45,10 @@ h1.title a svg {
 h1.title a span {
   position: relative;
   left: 10px;
+}
+
+.grid .settings-header {
+  display: flex;
 }
 
 #tasks,
