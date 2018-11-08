@@ -34,7 +34,6 @@ class TaskCreationBar extends Component {
         action="/today"
       >
         <input
-          autoCorrect="off"
           type="text"
           value={input}
           onChange={event => this.handleChange(event)}
