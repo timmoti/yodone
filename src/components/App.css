@@ -250,7 +250,8 @@ h1.title a span {
 }
 
 #today .view,
-#backlog .view {
+#backlog .view,
+#settings .view {
   color: #1fcc92;
   font-size: 24px;
   font-weight: 600;
@@ -258,10 +259,11 @@ h1.title a span {
 }
 
 #settings .section {
-  color: #1fcc92;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 25px;
+  color: #f27475;
+  font-size: 20px;
+  /* font-weight: 600; */
+  margin-bottom: 15px;
+  margin-top: 25px;
 }
 
 .grid .item input {

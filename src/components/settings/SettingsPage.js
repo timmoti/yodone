@@ -10,14 +10,14 @@ const SettingsPage = ({ history }) => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div id="settings" className="settings grid devise">
-        <div className='settings-header'>
-        <Logo />
-        <span className="signout">
-          <SignOutLink />
-        </span>
-
+        <div className="settings-header">
+          <Logo />
+          <span className="signout">
+            <SignOutLink />
+          </span>
         </div>
-        <span className="section">Change Password</span>
+        <span className="view">Settings</span>
+        <div className="section">Change Password</div>
         <PasswordChangeForm history={history} />
       </div>
     )}

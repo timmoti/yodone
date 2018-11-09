@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as routes from '../../routes/routes';
+import Settings from '../icons/Settings';
 
 const SettingsPageLink = () => {
   return (
@@ -10,7 +11,7 @@ const SettingsPageLink = () => {
         color: '#1fcc92'
       }}
     >
-      Settings
+      <Settings />
     </NavLink>
   );
 };
