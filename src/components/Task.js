@@ -3,6 +3,7 @@ import { RIEInput } from 'riek';
 import { db } from '../firebase/index';
 import Trash from './icons/Trash';
 import Forward from './icons/Forward';
+import Timeleft from './Timeleft';
 import * as routes from '../routes/routes';
 import { withRouter } from 'react-router-dom';
 
@@ -56,10 +57,6 @@ class Task extends Component {
 
     const { timeRemaining } = this.state;
 
-    const timeDisplayHrs = `${Math.ceil(timeRemaining / (60 * 60))}h`;
-    const timeDisplayMins = `${Math.ceil(timeRemaining / 60)}m`;
-    const timeDisplaySecs = `${Math.ceil(timeRemaining)}s`;
-
     return (
       <li className="task">
         <label htmlFor="todo" className="item">
@@ -96,15 +93,7 @@ class Task extends Component {
           {match.path === routes.BACKLOG && (
             <Forward handleTaskForward={handleTaskForward} taskId={taskId} />
           )}
-          <span className="timeleft">
-            {timeRemaining === null
-              ? ''
-              : timeRemaining > 3600
-                ? timeDisplayHrs
-                : timeRemaining <= 3600 && timeRemaining > 60
-                  ? timeDisplayMins
-                  : timeDisplaySecs}
-          </span>
+          <Timeleft timeRemaining={timeRemaining} />
         </label>
       </li>
     );

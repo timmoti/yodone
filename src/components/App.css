@@ -277,6 +277,14 @@ h1.title a span {
   right: 0;
 }
 
+.task .item #last-hour {
+  color: #f27475;
+}
+
+.task .item #still-early {
+  color: #1fcc92;
+}
+
 #new {
   margin: 16px 0 16px;
 }
