@@ -89,7 +89,7 @@ h1.title a span {
 /* grid item checkbox */
 .grid .item .cbx {
   position: relative;
-  top: 4px;
+  top: 1px;
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -147,6 +147,20 @@ h1.title a span {
   transition: color 0.3s ease;
   color: #fff;
   font-size: 16px;
+}
+
+label.item {
+  display: flex;
+  width: 480px;
+}
+
+span.taskname {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 370px;
 }
 
 .home.grid .item .cbx-lbl a {
@@ -378,5 +392,27 @@ nav {
   #tasks .item button.forward,
   .grid .task .move {
     display: inline-block;
+  }
+
+  span.taskname {
+    max-width: 210px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  span.taskname {
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  span.taskname {
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  span.taskname {
+    max-width: 160px;
   }
 }
