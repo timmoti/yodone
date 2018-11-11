@@ -405,6 +405,12 @@ nav {
   }
 }
 
+@media screen and (max-width: 375px) {
+  span.taskname {
+    max-width: 210px;
+  }
+}
+
 @media screen and (max-width: 360px) {
   span.taskname {
     max-width: 200px;
