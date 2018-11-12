@@ -407,6 +407,9 @@ nav {
 
 @media screen and (max-width: 375px) {
   span.taskname {
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
     max-width: 210px;
   }
 }
