@@ -395,12 +395,14 @@ nav {
   }
 
   span.taskname {
+    white-space: normal;
     max-width: 210px;
   }
 }
 
 @media screen and (max-width: 415px) {
   span.taskname {
+    white-space: normal;
     max-width: 250px;
   }
 }
@@ -408,20 +410,20 @@ nav {
 @media screen and (max-width: 375px) {
   span.taskname {
     white-space: normal;
-    text-overflow: ellipsis;
-    overflow: hidden;
     max-width: 210px;
   }
 }
 
 @media screen and (max-width: 360px) {
   span.taskname {
+    white-space: normal;
     max-width: 200px;
   }
 }
 
 @media screen and (max-width: 320px) {
   span.taskname {
+    white-space: normal;
     max-width: 160px;
   }
 }

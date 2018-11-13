@@ -25,7 +25,9 @@ const LandingPageTask = ({ timeRemaining }) => {
           </svg>
         </label>
         <label htmlFor="todo-2" className="cbx-lbl">
-          <span>Procrastinate not, else they'll be forgotten</span>
+          <span className="taskname">
+            Procrastinate not, else they'll be forgotten
+          </span>
         </label>
         <Timeleft timeRemaining={timeRemaining} />
       </label>
@@ -38,8 +40,8 @@ class LandingPageNonAuth extends Component {
     super(props);
 
     this.state = {
-      expiryTime: new Date().getTime() + 1000 * 10,
-      timeRemaining: 10
+      expiryTime: new Date().getTime() + 1000 * 20,
+      timeRemaining: 20
     };
   }
 
@@ -75,7 +77,7 @@ class LandingPageNonAuth extends Component {
                 </svg>
               </label>
               <label htmlFor="todo-1" className="cbx-lbl">
-                <span>In 24 hours, tasks disappear</span>
+                <span className="taskname">In 24 hours, tasks disappear</span>
               </label>
               <Timeleft timeRemaining="86400" />
             </label>
