@@ -11,27 +11,59 @@ class Task extends Component {
   constructor(props) {
     super(props);
 
+    this.secsRemaining = null;
+
     this.state = {
-      timeRemaining: null
+      timeInStateRemaining: null
     };
   }
 
   componentDidMount = () => {
-    this.timerID = setInterval(() => this.tick(), 1000);
+    if (this.props.match.path === routes.TODAY) {
+      const setTimeRemaining =
+        (this.props.timeExpired - new Date().getTime()) / 1000;
+      this.secsRemaining = setTimeRemaining;
+      this.setState({
+        timeInStateRemaining: setTimeRemaining
+      });
+      this.timerID = setInterval(() => this.tick(), 1000);
+    }
   };
 
   tick = () => {
     if (this.props.match.path === routes.TODAY) {
       const setTimeRemaining =
         (this.props.timeExpired - new Date().getTime()) / 1000;
-      this.setState({
-        timeRemaining: setTimeRemaining
-      });
+      this.secsRemaining = setTimeRemaining;
+      console.log(this.secsRemaining);
+      if (
+        this.secsRemaining > 3600 &&
+        Math.ceil(this.secsRemaining) % 3600 === 0
+      ) {
+        this.setState({
+          timeInStateRemaining: this.secsRemaining
+        });
+      } else if (
+        this.secsRemaining <= 3600 &&
+        this.secsRemaining > 60 &&
+        Math.ceil(this.secsRemaining) % 60 === 0
+      ) {
+        this.setState({
+          timeInStateRemaining: this.secsRemaining
+        });
+      } else if (this.secsRemaining <= 60) {
+        this.setState({
+          timeInStateRemaining: this.secsRemaining
+        });
+      }
     }
   };
 
   componentDidUpdate = () => {
-    if (this.state.timeRemaining !== null && this.state.timeRemaining <= 0) {
+    if (
+      this.state.timeInStateRemaining !== null &&
+      this.state.timeInStateRemaining <= 0
+    ) {
       this.props.clearTaskAfterExpired(this.props.taskId);
     }
   };
@@ -55,7 +87,7 @@ class Task extends Component {
       match
     } = this.props;
 
-    const { timeRemaining } = this.state;
+    const { timeInStateRemaining } = this.state;
 
     return (
       <li className="task">
@@ -93,7 +125,7 @@ class Task extends Component {
           {match.path === routes.BACKLOG && (
             <Forward handleTaskForward={handleTaskForward} taskId={taskId} />
           )}
-          <Timeleft timeRemaining={timeRemaining} />
+          <Timeleft timeRemaining={timeInStateRemaining} />
         </label>
       </li>
     );
