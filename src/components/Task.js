@@ -35,7 +35,6 @@ class Task extends Component {
       const setTimeRemaining =
         (this.props.timeExpired - new Date().getTime()) / 1000;
       this.secsRemaining = setTimeRemaining;
-      console.log(this.secsRemaining);
       if (
         this.secsRemaining > 3600 &&
         Math.ceil(this.secsRemaining) % 3600 === 0
